@@ -1,8 +1,14 @@
 package model;
 
+
+
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@XmlRootElement
 public class Order {
     private LocalDateTime created;
     private List<Product> products;
@@ -12,6 +18,8 @@ public class Order {
         return created;
     }
 
+
+    @XmlElement
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
@@ -20,6 +28,8 @@ public class Order {
         return products;
     }
 
+
+    @XmlElement
     public void setProducts(List<Product> products) {
         this.products = products;
     }
