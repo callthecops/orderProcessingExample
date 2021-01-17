@@ -1,6 +1,7 @@
 package model;
 
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
@@ -25,6 +26,7 @@ public class Product {
         return description;
     }
 
+    @XmlElement
     public void setDescription(String description) {
         this.description = description;
     }
@@ -33,6 +35,7 @@ public class Product {
         return gtin;
     }
 
+    @XmlElement
     public void setGtin(long gtin) {
         this.gtin = gtin;
     }
@@ -41,6 +44,7 @@ public class Product {
         return price;
     }
 
+    @XmlElement
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
@@ -49,6 +53,7 @@ public class Product {
         return supplier;
     }
 
+    @XmlElement
     public void setSupplier(String supplier) {
         this.supplier = supplier;
     }

@@ -8,6 +8,7 @@ public class App {
         Utils utils = new Utils();
         try {
             utils.marshal();
+            utils.unMarshal();
         } catch (JAXBException | IOException exception) {
             exception.printStackTrace();
         }
