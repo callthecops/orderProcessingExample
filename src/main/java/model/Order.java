@@ -4,31 +4,40 @@ package model;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @XmlRootElement
 public class Order {
 
-    private LocalDateTime created;
+    private int ID;
+    private String created;
     private List<Product> products;
 
 
     public Order() {
     }
 
-    public Order(LocalDateTime created, List<Product> products) {
+    public Order(int ID, String created, List<Product> products) {
+        this.ID = ID;
         this.created = created;
         this.products = products;
     }
 
-    public LocalDateTime getCreated() {
+    public int getID() {
+        return ID;
+    }
+
+    @XmlAttribute
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getCreated() {
         return created;
     }
 
-
     @XmlAttribute
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(String created) {
         this.created = created;
     }
 
