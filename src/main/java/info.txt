@@ -1,0 +1,3 @@
+I have used 2 libraries for this project.The first one is JaxB which allows me to marshall and unmarshall xml files
+to POJOS. The second one is google guava. This library allows me to use a special map class called Multimap so that i can
+add duplicate key - value pairs to it.
