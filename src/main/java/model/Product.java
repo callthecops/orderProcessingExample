@@ -1,7 +1,8 @@
 package model;
 
+import com.sun.xml.txw2.annotation.XmlElement;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAttribute;
 import java.math.BigDecimal;
 
 
@@ -10,7 +11,8 @@ public class Product {
     private long gtin;
     private BigDecimal price;
     private String supplier;
-
+    private String currency;
+    private int orderId;
     public Product() {
     }
 
@@ -19,6 +21,24 @@ public class Product {
         this.gtin = gtin;
         this.price = price;
         this.supplier = supplier;
+    }
+
+    public Product(String description, long gtin, BigDecimal price, String supplier, String currency, int orderId) {
+        this.description = description;
+        this.gtin = gtin;
+        this.price = price;
+        this.supplier = supplier;
+        this.currency = currency;
+        this.orderId = orderId;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    @XmlAttribute(name = "currency")
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public String getDescription() {
@@ -55,5 +75,14 @@ public class Product {
     @XmlElement
     public void setSupplier(String supplier) {
         this.supplier = supplier;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    @XmlElement
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 }
