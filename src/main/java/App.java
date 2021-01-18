@@ -15,8 +15,11 @@ public class App {
             Orders orders = utils.unMarshal();
             List<Order> order = orders.getOrder();
             List<Product> products = utils.extractProducts(order);
-            Multimap<String, Product> productsByVendors = utils.selectProductsByVendors(products);
-            utils.marshall(productsByVendors);
+            utils.marshall(products);
+
+
+//            Multimap<String, Product> productsByVendors = utils.selectProductsByVendors(products);
+//            utils.marshall(productsByVendors);
 
         } catch (JAXBException exception) {
             exception.printStackTrace();

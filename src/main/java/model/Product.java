@@ -3,9 +3,10 @@ package model;
 import com.sun.xml.txw2.annotation.XmlElement;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
-
+@XmlRootElement
 public class Product {
     private String description;
     private long gtin;
