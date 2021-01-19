@@ -1,3 +1,17 @@
-I have used 2 libraries for this project.The first one is JaxB which allows me to marshall and unmarshall xml files
-to POJOS. The second one is google guava. This library allows me to use a special map class called Multimap so that i can
-add duplicate key - value pairs to it.
+I have used jaxb for this project.This library allows me to marshal and unmarshal xml files
+to POJOS.I have created an input and output folder , basically the orders that are added in the input folder
+are processed by the application, and then all the products that are on them are selected and added to sepparate files
+which are added to the output folder.Because of lack of time i miss the following functionalities:
+
+1)I hardcoded the suppliers to only 3.If more time was available i could have created a dynamic way of adding suppliers
+to the application , and an interactive menu.
+
+2)My products are not sorted based on time.
+
+3)The string parsing for order name is also hardcoded so if we go above "Order99" the substring will not work correctly anymore.
+
+4)Only 3 files are outputed for all the vendors containing all the products from the orders in the input folder,
+it should have been ex Order01.xml -> panasonic01.xml;Order02.xml ->panasonic02.xml etc.
+
+All in all it was an interesting project, and the first time i have worked with jaxb.I believe i learned how to automate
+alot of the boring stuff by doing this small project.
