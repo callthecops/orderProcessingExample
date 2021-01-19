@@ -38,7 +38,10 @@ public class Utils {
         marshaller.marshal(panasonic, new File("src/output/panasonic.xml"));
         marshaller.marshal(apple, new File("src/output/apple.xml"));
         marshaller.marshal(sony, new File("src/output/sony.xml"));
+
+        System.out.println("The orders for the suppliers have been succesfully added to the output folder");
     }
+
 
     public Orders unMarshal() throws JAXBException {
         File someFile = new File("src/input/Order01.xml");
@@ -49,20 +52,20 @@ public class Utils {
     }
 
     public List<Product> extractProducts(List<Order> orderList) {
+
         List<Product> allProducts = new ArrayList<>();
         for (int i = 0; i < orderList.size(); i++) {
             List<Product> products = orderList.get(i).getProducts();
             for (Product p : products) {
                 p.setOrderId(orderList.get(i).getID());
-                LocalDateTime asd = orderList.get(i).getCreated();
-                p.setDate(asd);
-                System.out.println(orderList.get(i).getCreated());
-
+                LocalDateTime date = orderList.get(i).getCreated();
+                p.setDate(date);
                 allProducts.add(p);
             }
         }
         return allProducts;
     }
+
 
     public List<Orders> multiUnMarshal() throws JAXBException {
         File folder = new File("src/input/");
@@ -87,7 +90,7 @@ public class Utils {
     }
 
 
-    public List<List<Order>> extractOrder(List<Orders> ordersList) {
+    public List<List<Order>> extractListOrder(List<Orders> ordersList) {
         List<List<Order>> order = new ArrayList<>();
         for (int i = 0; i < ordersList.size(); i++) {
             List<Order> o = ordersList.get(i).getOrder();
@@ -95,5 +98,27 @@ public class Utils {
         }
 
         return order;
+    }
+
+
+    public List<Order> extractListOrder2(List<List<Order>> orderList) {
+        List<Order> returnedOrderList = new ArrayList<>();
+        for (int i = 0; i < orderList.size(); i++) {
+            List<Order> order = orderList.get(i);
+            returnedOrderList.addAll(order);
+        }
+        return returnedOrderList;
+    }
+
+    public void appWrapper(){
+        try {
+            List<Orders> wholeOrders = multiUnMarshal();
+            List<List<Order>> extractedOrdersList = extractListOrder(wholeOrders);
+            List<Order> orderList = extractListOrder2(extractedOrdersList);
+            List<Product> productList = extractProducts(orderList);
+            marshall(productList);
+        } catch (JAXBException exception) {
+            exception.printStackTrace();
+        }
     }
 }
