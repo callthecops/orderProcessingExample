@@ -1,6 +1,5 @@
 package Utils;
 
-import container.OrderContainer;
 import model.Order;
 import model.Orders;
 import model.Product;
@@ -65,31 +64,28 @@ public class Utils {
         return allProducts;
     }
 
-    public OrderContainer multiUnMarshal() throws JAXBException {
+    public List<Orders> multiUnMarshal() throws JAXBException {
         File folder = new File("src/input/");
         File[] listOfFiles = folder.listFiles();
         List<Orders> orderList = new ArrayList<>();
-        List<Integer> orderNumbers = new ArrayList<>();
-        OrderContainer orderContainer = new OrderContainer();
+
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                int orderNumber = Integer.parseInt(file.getName().substring(5, 7));
+                String orderNumber = file.getName().substring(5, 7);
+
                 String orderName = file.getName();
                 File someFile = new File("src/input/" + orderName);
                 JAXBContext jaxbContext = JAXBContext.newInstance(Orders.class);
                 Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
                 Orders orders = (Orders) unmarshaller.unmarshal(someFile);
+                orders.setOrdersNumber(orderNumber);
                 orderList.add(orders);
-                orderNumbers.add(orderNumber);
+
             }
         }
-        orderContainer.setOrderList(orderList);
-        orderContainer.setOrderNumber(orderNumbers);
-        return orderContainer;
+        return orderList;
     }
 
-
-    public List<Order> assign
 
     public List<List<Order>> extractOrder(List<Orders> ordersList) {
         List<List<Order>> order = new ArrayList<>();

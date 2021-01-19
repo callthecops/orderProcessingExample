@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Orders {
     @XmlTransient
-    private int ordersNumber;
+    private String ordersNumber;
     private List<Order> order;
 
     public Orders() {
@@ -29,11 +29,11 @@ public class Orders {
         this.order = order;
     }
 
-    public int getOrdersNumber() {
+    public String getOrdersNumber() {
         return ordersNumber;
     }
 
-    public void setOrdersNumber(int ordersNumber) {
+    public void setOrdersNumber(String ordersNumber) {
         this.ordersNumber = ordersNumber;
     }
 }

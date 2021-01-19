@@ -1,7 +1,5 @@
 import Utils.Utils;
-import model.Order;
 import model.Orders;
-import model.Product;
 
 import javax.xml.bind.JAXBException;
 import java.util.List;
@@ -10,8 +8,14 @@ public class App {
     public static void main(String[] args) {
         Utils utils = new Utils();
         try {
-            List<Orders> wholeOrders = utils.multiUnMarshal();
-            List<List<Order>> extractedOrders = utils.extractOrder(wholeOrders);
+
+
+           List<Orders> orders= utils.multiUnMarshal();
+           for(Orders o : orders){
+               System.out.println(o.getOrdersNumber());
+           }
+//            List<Orders> wholeOrders = utils.multiUnMarshal();
+//            List<List<Order>> extractedOrders = utils.extractOrder(wholeOrders);
 
 
 //            utils.multiUnMarshal();
